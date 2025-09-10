@@ -1,0 +1,271 @@
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #0c0c0c 0%, #1a1a1a 100%);
+    color: #ffffff;
+    overflow: hidden;
+    user-select: none;
+    -webkit-user-select: none;
+    -webkit-touch-callout: none;
+}
+
+/* Game Container */
+#gameContainer {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Canvas */
+#gameCanvas {
+    background: linear-gradient(180deg, #001122 0%, #000000 100%);
+    border: 2px solid #333;
+    box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+    max-width: 100%;
+    max-height: 100%;
+}
+
+/* Mobile Controls */
+.mobile-only {
+    display: none;
+}
+
+#mobileControls {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    right: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    z-index: 100;
+}
+
+.joystick {
+    width: 80px;
+    height: 80px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    position: relative;
+    touch-action: none;
+}
+
+.joystick-knob {
+    width: 30px;
+    height: 30px;
+    background: rgba(0, 255, 255, 0.8);
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: all 0.1s ease;
+    box-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+}
+
+.jump-button {
+    width: 80px;
+    height: 80px;
+    background: rgba(255, 0, 0, 0.7);
+    border: 2px solid rgba(255, 0, 0, 0.9);
+    border-radius: 50%;
+    color: white;
+    font-weight: bold;
+    font-size: 12px;
+    cursor: pointer;
+    touch-action: manipulation;
+    box-shadow: 0 0 15px rgba(255, 0, 0, 0.5);
+}
+
+.jump-button:active {
+    background: rgba(255, 0, 0, 0.9);
+    transform: scale(0.95);
+}
+
+/* Desktop Controls */
+.desktop-only {
+    display: block;
+}
+
+#desktopControls {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0, 0, 0, 0.7);
+    padding: 10px 20px;
+    border-radius: 20px;
+    font-size: 14px;
+    color: #ccc;
+    z-index: 50;
+}
+
+/* Game UI */
+#gameUI {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    right: 20px;
+    display: flex;
+    justify-content: space-between;
+    z-index: 50;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+#gameUI > div {
+    background: rgba(0, 0, 0, 0.7);
+    padding: 10px 15px;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Screens */
+.screen {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.9);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 200;
+    text-align: center;
+    padding: 20px;
+}
+
+.screen.hidden {
+    display: none;
+}
+
+.screen h1 {
+    font-size: 3em;
+    margin-bottom: 20px;
+    color: #ff4444;
+    text-shadow: 0 0 20px rgba(255, 68, 68, 0.5);
+}
+
+.screen p {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+    color: #ccc;
+}
+
+.instructions {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 20px;
+    border-radius: 10px;
+    margin: 20px 0;
+    max-width: 500px;
+}
+
+.instructions h3 {
+    color: #00ffff;
+    margin-bottom: 10px;
+}
+
+.game-button {
+    background: linear-gradient(45deg, #ff4444, #ff6666);
+    border: none;
+    color: white;
+    padding: 15px 30px;
+    font-size: 18px;
+    font-weight: bold;
+    border-radius: 10px;
+    cursor: pointer;
+    margin: 10px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(255, 68, 68, 0.3);
+}
+
+.game-button:hover {
+    background: linear-gradient(45deg, #ff6666, #ff8888);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(255, 68, 68, 0.4);
+}
+
+.game-button:active {
+    transform: translateY(0);
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .mobile-only {
+        display: block;
+    }
+    
+    .desktop-only {
+        display: none;
+    }
+    
+    #gameUI {
+        font-size: 16px;
+    }
+    
+    .screen h1 {
+        font-size: 2em;
+    }
+    
+    .screen p {
+        font-size: 1em;
+    }
+    
+    .game-button {
+        padding: 12px 25px;
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    #gameUI {
+        font-size: 14px;
+    }
+    
+    #gameUI > div {
+        padding: 8px 12px;
+    }
+    
+    .joystick {
+        width: 70px;
+        height: 70px;
+    }
+    
+    .jump-button {
+        width: 70px;
+        height: 70px;
+        font-size: 10px;
+    }
+}
+
+/* Animation Classes */
+.shake {
+    animation: shake 0.5s ease-in-out;
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    75% { transform: translateX(5px); }
+}
+
+.flash {
+    animation: flash 0.3s ease-in-out;
+}
+
+@keyframes flash {
+    0%, 100% { background-color: transparent; }
+    50% { background-color: rgba(255, 0, 0, 0.3); }
+}
